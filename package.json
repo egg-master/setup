@@ -5,7 +5,7 @@
 	"version": "0.0.3",
 	"publisher": "egg",
 	"engines": {
-		"vscode": "^1.20.0"
+		"vscode": "^1.1.0"
 	},
 	"license": "MIT",
 	"categories": [
@@ -17,19 +17,24 @@
 	],
 	"main": "./out/extension",
 	"contributes": {
-		"commands": [{
-			"command": "template.update",
-			"title": "egg template update"
-		}, {
-			"command": "dev.start.go",
-			"title": "egg develop go"
-		}, {
-			"command": "dev.start.goapp",
-			"title": "egg develop goapp"
-		}, {
-			"command": "dev.start.web",
-			"title": "egg develop web"
-		}]
+		"commands": [
+			{
+				"command": "template.update",
+				"title": "egg template update"
+			},
+			{
+				"command": "dev.start.go",
+				"title": "egg develop go"
+			},
+			{
+				"command": "dev.start.goapp",
+				"title": "egg develop goapp"
+			},
+			{
+				"command": "dev.start.web",
+				"title": "egg develop web"
+			}
+		]
 	},
 	"scripts": {
 		"vscode:prepublish": "yarn run compile",
@@ -43,11 +48,9 @@
 		"@types/mocha": "^2.2.42",
 		"@types/node": "^7.0.43",
 		"jquery": "^3.3.1",
-		"nodegit": "^0.21.2",
-		"simple-git": "^1.92.0",
 		"tslint": "^5.8.0",
 		"typescript": "^2.6.1",
-		"vscode": "^1.1.6"
+		"vscode": "^1.1.0"
 	},
 	"extensionDependencies": [
 		"lukehoban.Go"
