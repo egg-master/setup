@@ -9,10 +9,17 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.commands.registerCommand('template.update', template.updateTemplate),
 		vscode.commands.registerCommand('dev.start.go', template.startGo),
 		vscode.commands.registerCommand('dev.start.goapp', template.startGoapp),
-		vscode.commands.registerCommand('dev.start.web', template.startWeb)
+		vscode.commands.registerCommand('dev.start.web', template.startWeb),
+		vscode.commands.registerTextEditorCommand('new.test', editor => {
+			return vscode.workspace.openTextDocument(editor.document.uri)
+				.then(doc => {
+					vscode.window.showTextDocument(doc, editor.viewColumn + 1)
+				})
+		}),
+		vscode.commands.registerCommand('new.window', () => {
+			vscode.commands.executeCommand('vscode.openFolder')
+		})
 	)
-
-	console.log(context.subscriptions)
 }
 
 export function deactivate() {

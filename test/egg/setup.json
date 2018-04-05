@@ -1,6 +1,6 @@
 {
     "template": {
-        "dir": "tmp",
-        "url": "https://github.com/rint-egg/template.git"
+        "dir": "egg",
+        "url": "https://github.com/egg-master/template.git"
     }
 }

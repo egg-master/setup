@@ -50,8 +50,8 @@ export function updateTemplate() {
 	if (fs.existsSync(conf)) {
 		fs.readFile(conf, 'utf-8', (err, data) => {
 			const json = JSON.parse(data)
-			const dir = json.template.dir ? json.template.dir : 'tmp'
-			const url = json.template.url ? json.template.url : 'https://github.com/rint-egg/template.git'
+			const dir = json.template.dir ? json.template.dir : config.main.template.dir
+			const url = json.template.url ? json.template.url : config.main.template.url
 			getTemplate(vscode.workspace.rootPath + path.sep + dir, url)
 		})
 

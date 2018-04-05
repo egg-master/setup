@@ -33,6 +33,14 @@
 			{
 				"command": "dev.start.web",
 				"title": "egg develop web"
+			},
+			{
+				"command": "new.window",
+				"title": "egg new window"
+			},
+			{
+				"command": "new.test",
+				"title": "egg new test"
 			}
 		]
 	},
@@ -50,9 +58,10 @@
 		"jquery": "^3.3.1",
 		"tslint": "^5.8.0",
 		"typescript": "^2.6.1",
-		"vscode": "^1.1.0"
+		"vscode": "^1.1.14"
 	},
 	"extensionDependencies": [
 		"lukehoban.Go"
-	]
+	],
+	"dependencies": {}
 }
