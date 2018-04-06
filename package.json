@@ -23,15 +23,15 @@
 				"title": "egg template update"
 			},
 			{
-				"command": "dev.start.go",
+				"command": "develop.go",
 				"title": "egg develop go"
 			},
 			{
-				"command": "dev.start.goapp",
+				"command": "develop.goapp",
 				"title": "egg develop goapp"
 			},
 			{
-				"command": "dev.start.web",
+				"command": "develop.web",
 				"title": "egg develop web"
 			},
 			{

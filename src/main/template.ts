@@ -4,7 +4,6 @@ import * as vscode from 'vscode'
 import * as fs from 'fs'
 import * as path from 'path'
 import * as child_process from 'child_process'
-
 import * as config from './config'
 
 const updateOpt = {
@@ -64,11 +63,4 @@ export function updateTemplate() {
 		})
 		*/
 	}
-}
-
-export function startGo() {
-}
-export function startGoapp() {
-}
-export function startWeb() {
 }
