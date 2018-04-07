@@ -8,6 +8,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(
 		vscode.commands.registerCommand('template.update', template.update),
 		vscode.commands.registerCommand('develop.init', develop.init),
+		vscode.commands.registerCommand('develop.clear', develop.clear),
 		vscode.commands.registerCommand('develop.go', develop.initGo),
 		vscode.commands.registerCommand('develop.goapp', develop.initGoapp),
 		vscode.commands.registerCommand('develop.web', develop.initWeb),

@@ -27,6 +27,10 @@
 				"title": "egg develop init"
 			},
 			{
+				"command": "develop.clear",
+				"title": "egg develop clear"
+			},
+			{
 				"command": "develop.go",
 				"title": "egg develop go"
 			},
