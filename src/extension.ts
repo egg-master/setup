@@ -1,15 +1,16 @@
 'use strict'
 
 import * as vscode from 'vscode'
-import * as template from './main/template'
-import * as develop from './main/develop'
+import { template } from './main/template'
+import { develop } from './main/develop'
 
 export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(
-		vscode.commands.registerCommand('template.update', template.updateTemplate),
-		vscode.commands.registerCommand('develop.go', develop.startGo),
-		vscode.commands.registerCommand('develop.goapp', develop.startGoapp),
-		vscode.commands.registerCommand('develop.web', develop.startWeb),
+		vscode.commands.registerCommand('template.update', template.update),
+		vscode.commands.registerCommand('develop.init', develop.init),
+		vscode.commands.registerCommand('develop.go', develop.initGo),
+		vscode.commands.registerCommand('develop.goapp', develop.initGoapp),
+		vscode.commands.registerCommand('develop.web', develop.initWeb),
 		vscode.commands.registerTextEditorCommand('new.test', editor => {
 			return vscode.workspace.openTextDocument(editor.document.uri)
 				.then(doc => {

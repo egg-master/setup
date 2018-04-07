@@ -4,7 +4,11 @@ import * as vscode from 'vscode'
 import * as fs from 'fs'
 import * as path from 'path'
 import * as child_process from 'child_process'
-import * as config from './config'
+import { config } from './config'
+
+export const template = {
+	update: updateTemplate
+}
 
 const updateOpt = {
 	nothing: 'do nothing',
@@ -12,20 +16,20 @@ const updateOpt = {
 }
 
 function getTemplate(
-	distpath: string,
+	destpath: string,
 	giturl: string
 ) {
-	const dist_dirname = path.dirname(distpath)
-	const dist_basename = path.basename(distpath)
+	const dest_dirname = path.dirname(destpath)
+	const dest_basename = path.basename(destpath)
 	const git_basename = path.basename(giturl, '.git')
-	if (!fs.existsSync(distpath)) {
-		child_process.spawnSync('mkdir', [dist_basename], {
-			cwd: dist_dirname
+	if (!fs.existsSync(destpath)) {
+		child_process.spawnSync('mkdir', [dest_basename], {
+			cwd: dest_dirname
 		})
 	}
-	if (!fs.existsSync(distpath + path.sep + git_basename)) {
+	if (!fs.existsSync(destpath + path.sep + git_basename)) {
 		child_process.spawnSync('git', ['clone', giturl], {
-			cwd: distpath
+			cwd: destpath
 		})
 	} else {
 		vscode.window.showQuickPick([
@@ -33,34 +37,33 @@ function getTemplate(
 			updateOpt.nothing
 		]).then(select => {
 			if (select === updateOpt.update) {
-				const ret = child_process.spawnSync('git', ['pull'], {
-					cwd: distpath
+				child_process.spawnSync('git', ['pull'], {
+					cwd: destpath
 				})
-				console.log(ret.output)
 			}
 		})
 	}
 }
 
-export function updateTemplate() {
-	const conf = vscode.workspace.rootPath +
-		path.sep + config.main.name +
-		path.sep + config.main.setupfile
-	if (fs.existsSync(conf)) {
-		fs.readFile(conf, 'utf-8', (err, data) => {
+function setupTemplate(dir: string, url: string) {
+	getTemplate(vscode.workspace.rootPath + path.sep + dir, url)
+}
+
+function updateTemplate() {
+	const setupFile = config.getPathSetupFile()
+	if (fs.existsSync(setupFile)) {
+		fs.readFile(setupFile, 'utf-8', (err, data) => {
 			const json = JSON.parse(data)
-			const dir = json.template.dir ? json.template.dir : config.main.template.dir
-			const url = json.template.url ? json.template.url : config.main.template.url
-			getTemplate(vscode.workspace.rootPath + path.sep + dir, url)
+			if (json && json.template) {
+				setupTemplate(
+					json.template.dir ? json.template.dir : config.template.dir,
+					json.template.url ? json.template.url : config.template.url
+				)
+			} else {
+				setupTemplate(config.template.dir, config.template.url)
+			}
 		})
-
-		//vscode.window.showInformationMessage('info: ' + vscode.workspace.rootPath)
-		//console.log(vscode.workspace.workspaceFolders)
-
-		/*
-		vscode.workspace.onDidChangeWorkspaceFolders(e => {
-			console.log(e)
-		})
-		*/
+	} else {
+		setupTemplate(config.template.dir, config.template.url)
 	}
 }
