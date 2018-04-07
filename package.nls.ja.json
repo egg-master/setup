@@ -1,3 +1,8 @@
 {
-    "egg.template.update": "egg テンプレート更新"
+    "egg.template.update": "egg テンプレート更新",
+    "egg.develop.init": "egg 開発環境作成",
+    "egg.develop.clear": "egg 開発環境削除",
+    "egg.develop.go": "egg Goプロジェクト作成",
+    "egg.develop.goapp": "egg GAEプロジェクト作成",
+    "egg.develop.web": "egg Webプロジェクト作成"
 }

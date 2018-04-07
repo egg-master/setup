@@ -1,3 +1,8 @@
 {
-    "egg.template.update": "egg template update"
+    "egg.template.update": "egg template update",
+    "egg.develop.init": "egg develop init",
+    "egg.develop.clear": "egg develop clear",
+    "egg.develop.go": "egg develop go",
+    "egg.develop.goapp": "egg develop goapp",
+    "egg.develop.web": "egg develop web"
 }

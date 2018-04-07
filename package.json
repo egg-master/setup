@@ -24,23 +24,23 @@
 			},
 			{
 				"command": "develop.init",
-				"title": "egg develop init"
+				"title": "%egg.develop.init%"
 			},
 			{
 				"command": "develop.clear",
-				"title": "egg develop clear"
+				"title": "%egg.develop.clear%"
 			},
 			{
 				"command": "develop.go",
-				"title": "egg develop go"
+				"title": "%egg.develop.go%"
 			},
 			{
 				"command": "develop.goapp",
-				"title": "egg develop goapp"
+				"title": "%egg.develop.goapp%"
 			},
 			{
 				"command": "develop.web",
-				"title": "egg develop web"
+				"title": "%egg.develop.web%"
 			},
 			{
 				"command": "new.window",
