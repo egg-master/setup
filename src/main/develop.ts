@@ -41,12 +41,17 @@ function initProject(typeName: string, cmd: string) {
 			const dest = path.resolve(vscode.workspace.rootPath + '/proj/' + name)
 			if (!fs.existsSync(dest)) {
 				fsextra.copySync(src, dest)
+				vscode.commands.executeCommand(
+					'vscode.openFolder',
+					vscode.Uri.file(path.resolve(dest)),
+					true
+				)
 			} else {
 				vscode.window.showErrorMessage('既に「' + name + '」は使用されています。')
 			}
 		} else {
 			vscode.window.showErrorMessage('プロジェクト名を入力してください')
-			vscode.commands.executeCommand('develop.go')
+			//vscode.commands.executeCommand('develop.go')
 		}
 	});
 }
