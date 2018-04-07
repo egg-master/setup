@@ -6,11 +6,11 @@ import * as vscode from 'vscode'
 import * as path from 'path'
 import { config } from './config'
 
-const templatePath = config.getPath() + path.sep + 'template'
+const templatePath = path.resolve(config.getPath() + '/template')
 
 export const develop = {
 	init: () => {
-		const src = templatePath + path.sep + 'base'
+		const src = path.resolve(templatePath + '/base')
 		const dest = vscode.workspace.rootPath
 		fsextra.copySync(src, dest)
 	},
@@ -27,7 +27,6 @@ export const develop = {
 		const dirs = ['backup', 'conf', 'doc', 'proj', 'tmp', 'tools', 'trash']
 		dirs.map(elm => {
 			const dir = path.resolve(vscode.workspace.rootPath + '/' + elm)
-			console.log(dir)
 			fsextra.removeSync(dir)
 		})
 	}

@@ -27,7 +27,7 @@ function getTemplate(
 			cwd: dest_dirname
 		})
 	}
-	if (!fs.existsSync(destpath + path.sep + git_basename)) {
+	if (!fs.existsSync(path.resolve(destpath + '/' + git_basename))) {
 		child_process.spawnSync('git', ['clone', giturl], {
 			cwd: destpath
 		})
@@ -46,7 +46,7 @@ function getTemplate(
 }
 
 function setupTemplate(dir: string, url: string) {
-	getTemplate(vscode.workspace.rootPath + path.sep + dir, url)
+	getTemplate(path.resolve(vscode.workspace.rootPath + '/' + dir), url)
 }
 
 function updateTemplate() {

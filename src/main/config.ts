@@ -11,12 +11,11 @@ export const config = {
 		url: 'https://github.com/egg-master/template.git'
 	},
 	getPath: () => {
-		return vscode.workspace.rootPath +
-			path.sep + config.name
+		return path.resolve(vscode.workspace.rootPath + '/' + config.name)
 	},
 	getPathSetupFile: () => {
-		return vscode.workspace.rootPath +
-			path.sep + config.name +
-			path.sep + config.setupfile
+		return path.resolve(vscode.workspace.rootPath +
+			'/' + config.name +
+			'/' + config.setupfile)
 	}
 }
