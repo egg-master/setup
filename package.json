@@ -20,7 +20,7 @@
 		"commands": [
 			{
 				"command": "template.update",
-				"title": "egg template update"
+				"title": "%egg.template.update%"
 			},
 			{
 				"command": "develop.init",
