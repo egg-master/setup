@@ -12,5 +12,8 @@ export const log = {
     get: _log,
     info: (msg: any) => {
         _log.appendLine(dateNow() + ' ' + msg)
+    },
+    error: (msg: any) => {
+        _log.appendLine(dateNow() + ' error:' + msg)
     }
 }

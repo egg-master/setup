@@ -2,7 +2,7 @@
 	"name": "egg-setup",
 	"displayName": "egg-setup",
 	"description": "",
-	"version": "0.0.3",
+	"version": "0.1.0",
 	"publisher": "egg",
 	"engines": {
 		"vscode": "^1.20.0"

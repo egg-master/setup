@@ -1,6 +1,8 @@
 'use strict'
 
 import * as vscode from 'vscode'
+import { log } from './log'
+
 import * as fs from 'fs'
 import * as path from 'path'
 import * as child_process from 'child_process'
@@ -23,11 +25,13 @@ function getTemplate(
 	const dest_basename = path.basename(destpath)
 	const git_basename = path.basename(giturl, '.git')
 	if (!fs.existsSync(destpath)) {
+		log.info('mkdir ' + destpath)
 		child_process.spawnSync('mkdir', [dest_basename], {
 			cwd: dest_dirname
 		})
 	}
 	if (!fs.existsSync(path.resolve(destpath + '/' + git_basename))) {
+		log.info('git clone ' + giturl)
 		child_process.spawnSync('git', ['clone', giturl], {
 			cwd: destpath
 		})
@@ -37,6 +41,7 @@ function getTemplate(
 			updateOpt.nothing
 		]).then(select => {
 			if (select === updateOpt.update) {
+				log.info('git pull')
 				child_process.spawnSync('git', ['pull'], {
 					cwd: destpath
 				})
@@ -52,6 +57,7 @@ function setupTemplate(dir: string, url: string) {
 function updateTemplate() {
 	const setupFile = config.getPathSetupFile()
 	if (fs.existsSync(setupFile)) {
+		log.info('setupFile: ' + setupFile)
 		fs.readFile(setupFile, 'utf-8', (err, data) => {
 			const json = JSON.parse(data)
 			if (json && json.template) {

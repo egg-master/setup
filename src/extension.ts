@@ -1,11 +1,11 @@
 'use strict'
 
 import * as vscode from 'vscode'
+import { log } from './main/log'
+
 import { template } from './main/template'
 import { develop } from './main/develop'
-import { log } from './main/log'
 import { env } from './main/env'
-import * as path from 'path'
 
 export function activate(context: vscode.ExtensionContext) {
 	log.info('activate')
