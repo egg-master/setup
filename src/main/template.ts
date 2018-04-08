@@ -43,7 +43,7 @@ function getTemplate(
 			if (select === updateOpt.update) {
 				log.info('git pull')
 				child_process.spawnSync('git', ['pull'], {
-					cwd: destpath
+					cwd: path.resolve(destpath + '/template')
 				})
 			}
 		})

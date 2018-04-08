@@ -6,6 +6,7 @@ import * as path from 'path'
 export const config = {
 	name: 'egg',
 	setupfile: 'setup.json',
+	goappfile: 'goapp.json',
 	template: {
 		dir: 'egg',
 		url: 'https://github.com/egg-master/template.git'
@@ -17,5 +18,10 @@ export const config = {
 		return path.resolve(vscode.workspace.rootPath +
 			'/' + config.name +
 			'/' + config.setupfile)
+	},
+	getPathGoappFile: () => {
+		return path.resolve(vscode.workspace.rootPath +
+			'/' + config.name +
+			'/' + config.goappfile)
 	}
 }

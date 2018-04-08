@@ -13,7 +13,8 @@
 	],
 	"activationEvents": [
 		"onCommand:template.update",
-		"workspaceContains:egg/setup.json"
+		"workspaceContains:egg/setup.json",
+		"workspaceContains:egg/goapp.json"
 	],
 	"main": "./out/extension",
 	"contributes": {
