@@ -71,5 +71,8 @@ function updateTemplate() {
 		})
 	} else {
 		setupTemplate(config.template.dir, config.template.url)
+		fs.writeFile(setupFile, "", err => {
+			log.info('writeFile error: ' + setupFile)
+		})
 	}
 }

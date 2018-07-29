@@ -10,9 +10,10 @@ import { config } from './config'
 let terminal
 
 function getGopath(gopath: any): string {
-	log.info('env: ' + gopath)
-	return path.resolve(vscode.workspace.rootPath + '/' + gopath.external + ';' +
-		vscode.workspace.rootPath + '/' + gopath.app)
+    const str = vscode.workspace.rootPath + '/' + gopath.external + ';' +
+        vscode.workspace.rootPath + '/' + gopath.app
+    log.info('env: ' + str)
+    return path.resolve(str)
 }
 
 export const env = {
@@ -22,13 +23,16 @@ export const env = {
             fs.readFile(goappFile, 'utf-8', (err, data) => {
                 const json = JSON.parse(data)
                 if (json && json.gopath) {
-                    terminal = vscode.window.createTerminal({
-                        name: 'egg',
-                        env: {
-                            GOPATH: getGopath(json.gopath)
-                        }
+                    const vsconf = vscode.workspace.getConfiguration('go')
+                    vsconf.update('gopath', getGopath(json.gopath)).then(() => {
+                        terminal = vscode.window.createTerminal({
+                            name: 'egg',
+                            env: {
+                                GOPATH: getGopath(json.gopath)
+                            }
+                        })
+                        terminal.show()
                     })
-                    terminal.show()
                 }
             })
         }

@@ -1,7 +1,1 @@
-# Change Log
-All notable changes to the "egg-setup" extension will be documented in this file.
-
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
-
-## [Unreleased]
-- Initial release
+# 初回リリース 2018/07/30
