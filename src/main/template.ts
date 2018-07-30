@@ -59,7 +59,11 @@ function updateTemplate() {
 	if (fs.existsSync(setupFile)) {
 		log.info('setupFile: ' + setupFile)
 		fs.readFile(setupFile, 'utf-8', (err, data) => {
-			const json = JSON.parse(data)
+			let json = null
+			try {
+				json = JSON.parse(data)
+			} catch (e) {
+			}
 			if (json && json.template) {
 				setupTemplate(
 					json.template.dir ? json.template.dir : config.template.dir,
