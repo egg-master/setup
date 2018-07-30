@@ -2,7 +2,7 @@
 	"name": "egg-setup",
 	"displayName": "egg-setup",
 	"description": "開発環境管理",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"publisher": "egg",
 	"engines": {
 		"vscode": "^1.20.0"
