@@ -16,8 +16,21 @@ function getGopath(gopath: any): string {
     return path.resolve(str)
 }
 
+function getGCSDK(): string {
+    return path.resolve(process.env.LocalAppData + '/Google/Cloud SDK/google-cloud-sdk')
+}
+
+function getPath(gcsdk: any): string {
+    let pathStr = gcsdk + '/platform/google_appengine;'
+    pathStr += gcsdk + '/bin;'
+    pathStr += process.env.GOROOT + '/bin;'
+    pathStr += process.env.PATH
+    return path.resolve(pathStr)
+}
+
 export const env = {
     initGoapp: () => {
+        log.info(process.env)
         const goappFile = config.getPathGoappFile()
         if (fs.existsSync(goappFile)) {
             fs.readFile(goappFile, 'utf-8', (err, data) => {
@@ -25,10 +38,13 @@ export const env = {
                 if (json && json.gopath) {
                     const vsconf = vscode.workspace.getConfiguration('go')
                     vsconf.update('gopath', getGopath(json.gopath)).then(() => {
+                        const gcsdk = getGCSDK()
                         terminal = vscode.window.createTerminal({
                             name: 'egg',
                             env: {
-                                GOPATH: getGopath(json.gopath)
+                                GOPATH: getGopath(json.gopath),
+                                GCSDK: gcsdk,
+                                PATH: getPath(gcsdk)
                             }
                         })
                         terminal.show()
