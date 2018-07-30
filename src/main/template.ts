@@ -75,8 +75,11 @@ function updateTemplate() {
 		})
 	} else {
 		setupTemplate(config.template.dir, config.template.url)
-		fs.writeFile(setupFile, "", err => {
-			log.info('writeFile error: ' + setupFile)
+		const jsonString = JSON.stringify({
+			template: config.template
+		}, null, 4)
+		fs.writeFile(setupFile, jsonString, err => {
+			log.error('writeFile error: ' + setupFile + '\n' + jsonString)
 		})
 	}
 }
